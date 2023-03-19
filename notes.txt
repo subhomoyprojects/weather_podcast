@@ -1,0 +1,12 @@
+👉 To get lat long this api has been used.
+http://api.openweathermap.org/geo/1.0/direct?q={Alaska}&limit=1&appid=73dc731ba55dd7b5076e0c73e65df03a
+
+👉 To get weather podcast below api has been used.
+
+https://api.openweathermap.org/data/2.5/weather?lat={44.34}&lon={10.99}&appid=73dc731ba55dd7b5076e0c73e65df03a
+
+
+👉 To manage api we has been used AXIOS
+
+npm i axios
+import axios from 'axios';
