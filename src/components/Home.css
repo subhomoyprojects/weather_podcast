@@ -48,8 +48,40 @@ h2 {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-around;
+}
+.bottom-part .item {
+  flex: 1;
+  padding: 15px;
+}
+.bottom-part .item h4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.bottom-part .item h4 span {
+  font-size: 3rem;
+}
+.bottom-part .item h4 strong {
+  color: #ffff00;
+  font-weight: 400;
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 5px;
+}
+.bottom-part .item h4 strong::before {
+  content: "";
+  width: 20px;
+  height: 2px;
+  background-color: #ffff00;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: 0 auto;
+  bottom: 0;
 }
 .select-location {
   background-color: rgba(255, 255, 255, 0.1);
@@ -61,11 +93,74 @@ h2 {
   max-width: 500px;
   min-height: 50px;
 }
-.select-location select {
+.select-location select,
+.select-location input:not([type="submit"]) {
   width: 100%;
   height: 50px;
   padding: 1rem 3rem 1rem 1rem;
   border: none;
   border-radius: 10px;
   font-size: 2rem;
+}
+.select-location input:not([type="submit"]) {
+  padding: 1rem;
+  /* text-align: center; */
+  color: #000;
+  text-transform: uppercase;
+  outline: none;
+  border-radius: 10px 0 0 10px;
+}
+.select-location button {
+  border-radius: 0 10px 10px 0;
+}
+.input-holder {
+  display: flex;
+}
+.top-part {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.top-left-part h1 i {
+  margin-right: 15px;
+}
+.top-left-part h1 span {
+  font-weight: 300;
+  font-size: 4rem;
+}
+.top-right-part h3 i,
+.top-right-part h3 img,
+.top-right-part h3 svg {
+  margin-right: 15px;
+  max-width: 40px;
+}
+@media (max-width: 560px) {
+  h1 {
+    font-size: 4rem;
+  }
+  .top-left-part h1 span {
+    font-size: 2.4rem;
+  }
+  .top-right-part h3 i,
+  .top-right-part h3 img,
+  .top-right-part h3 svg {
+    margin: 0;
+    text-align: right;
+    display: table;
+    margin-left: auto;
+  }
+  .top-right-part h3 {
+    text-align: right;
+  }
+  h2 {
+    font-size: 3rem;
+  }
+  .select-location select,
+  .select-location input:not([type="submit"]) {
+    font-size: 1.5rem;
+  }
+  .bottom-part .item {
+    flex: 0 0 auto;
+    width: 50%;
+  }
 }
