@@ -1,16 +1,22 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
+import Home from "./Home";
 export default function Project() {
-  const [city, setcity] = useState("");
+  const [city, setcity] = useState();
   const [data, setdata] = useState({
     description: "",
+    icon: "",
     temp: 0,
-    temp_max: 0,
-    temp_min: 0,
+    wind_speed: 0,
+    wind_deg: 0,
     humidity: 0,
     country: "",
+    pressure: 0,
   });
+  const valuechange = (e) => {
+    setcity(e.target.value);
+  };
   const handelclick = (e) => {
     axios
       .get(
@@ -20,9 +26,11 @@ export default function Project() {
         console.log(res.data);
         setdata({
           description: res.data.weather[0].description,
+          icon: res.data.weather[0].icon,
           temp: res.data.main.temp,
-          temp_max: res.data.main.temp_max,
-          temp_min: res.data.main.temp_min,
+          pressure: res.data.main.pressure,
+          wind_speed: res.data.wind.speed,
+          wind_deg: res.data.wind.deg,
           humidity: res.data.main.humidity,
           country: res.data.sys.country,
         });
@@ -31,40 +39,19 @@ export default function Project() {
 
   return (
     <>
-      ENTER city NAME :
-      <input
-        type="text"
-        name="name"
-        value={city}
-        onChange={(e) => {
-          setcity(e.target.value);
-        }}
+      <Home
+        valuechange={valuechange}
+        handelclick={handelclick}
+        city_name={city}
+        country={data.country}
+        temp={data.temp}
+        icon={data.icon}
+        description={data.description}
+        humidity={data.humidity}
+        wind_speed={data.wind_speed}
+        wind_deg={data.wind_deg}
+        pressure={data.pressure}
       />
-      <button type="submit" onClick={handelclick}>
-        search
-      </button>
-      <div>
-        <h2>
-          city<br></br>
-          {city}
-        </h2>
-        <h2>Temparature</h2>
-        {data.temp}
-        <br></br>
-        <h2>MaximumTemparature</h2>
-        {data.temp_max}
-        <br></br>
-        <h2>Minimum Temparature</h2>
-        {data.temp_min}
-        <h2>Humudity</h2>
-        {data.humidity}
-        <br></br>
-        <h2>Weather Description</h2>
-        {data.description}
-        <br></br>
-        <h2>Country Name</h2>
-        {data.country}
-      </div>
     </>
   );
 }

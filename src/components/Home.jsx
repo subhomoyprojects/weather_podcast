@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.css";
 
 function Home(props) {
+  const url = `https://openweathermap.org/img/wn/${props.icon}@4x.png`;
   return (
     <>
       <section className="home-wrapper">
@@ -10,16 +11,19 @@ function Home(props) {
             <div className="top-left-part">
               <h1>
                 <i class="fa-sharp fa-thin fa-location-dot"></i>
-                Kolkata <span>(IN)</span>
+                {props.city_name} <span>({props.country})</span>
               </h1>
             </div>
             <div className="top-right-part">
               <h3>
-                <i class="fa-solid fa-cloud-sun-rain"></i>
-                <span>20</span>
+                {/* <i class="fa-solid fa-cloud-sun-rain"></i> */}
+                <span className="img-wrap">
+                  <img src={url} alt="" />
+                </span>
+                <span>{props.temp}</span>
                 <sup>°</sup>C
               </h3>
-              <h4>Clear Sky</h4>
+              <h4>{props.description}</h4>
             </div>
           </div>
           <div className="location-choose">
@@ -30,8 +34,14 @@ function Home(props) {
                 <option value="austin">Austin</option>
               </select> */}
               <div className="input-holder">
-                <input type="text" placeholder="Put City Name" />
-                <button type="button">Search</button>
+                <input
+                  type="text"
+                  placeholder="Put City Name"
+                  onChange={props.valuechange}
+                />
+                <button onClick={props.handelclick} type="button">
+                  Search
+                </button>
               </div>
             </div>
           </div>
@@ -39,29 +49,28 @@ function Home(props) {
             <div className="item">
               <h4>
                 <strong>Humidity</strong>
-                <span>95%</span>
+                <span>{props.humidity}%</span>
               </h4>
             </div>
             <div className="item">
               <h4>
                 <strong>Wind Speed</strong>
-                <span>3.6</span>
+                <span>{props.wind_speed} km/h</span>
               </h4>
             </div>
             <div className="item">
               <h4>
                 <strong>Wind Deg</strong>
                 <span>
-                  310<sup>°</sup>
+                  {props.wind_deg}
+                  <sup>°</sup>
                 </span>
               </h4>
             </div>
             <div className="item">
               <h4>
-                <strong>Temp</strong>
-                <span>
-                  95<sup>°</sup>C
-                </span>
+                <strong>Pressure</strong>
+                <span>{props.pressure} HPA</span>
               </h4>
             </div>
           </div>
