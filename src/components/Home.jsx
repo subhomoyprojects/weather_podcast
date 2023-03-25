@@ -10,7 +10,7 @@ function Home(props) {
           <div className="top-part">
             <div className="top-left-part">
               <h1>
-                <i class="fa-sharp fa-thin fa-location-dot"></i>
+                <i className="fa-sharp fa-thin fa-location-dot"></i>
                 {props.city_name} <span>({props.country})</span>
               </h1>
             </div>

@@ -34,6 +34,9 @@ export default function Project() {
           humidity: res.data.main.humidity,
           country: res.data.sys.country,
         });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
